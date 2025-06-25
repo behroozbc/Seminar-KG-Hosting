@@ -24,8 +24,9 @@ jobs:
     - name: Build
       shell: bash
       run: |
-        npm ci
-        npm run-script build
+        npm i -g pnpm
+        pnpm install
+        pnpm run-script build
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@releases/v3
       with:
