@@ -11,6 +11,8 @@
   "dependencies": {
     "@slidev/cli": "^51.8.2",
     "slidev-theme-academic": "^2.1.0",
-    "vue": "^3.5.16"
+    "vue": "^3.5.16",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest"
   }
 }
