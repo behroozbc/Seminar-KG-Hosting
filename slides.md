@@ -113,6 +113,7 @@ Tourism is one of the most critical sectors of the global economy. Due to its he
 ---
 src: ./pages/relational-databases.md
 ---
+
 ---
 layout: figure
 figureCaption: Curated cover image for Slidev
