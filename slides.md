@@ -43,8 +43,6 @@ a set of nodes and edges between them that
  represent entities and their relationships
 </v-clicks>
 ---
-layout: default
----
 
 # What challenges we face to host a KG?
 
