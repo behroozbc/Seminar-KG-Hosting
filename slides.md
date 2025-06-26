@@ -29,14 +29,14 @@ image: https://wordlift.io/blog/en/wp-content/uploads/sites/3/2016/11/google-kno
 
 <v-clicks >
 
-## Why we need to host a knowledge graph?
+## Why we need to host a KG(Knowledge graph)?
 
 - It has many application. 
 
 - We saw what is it benefits.
 
 
-## What build knowledge graphs?
+## What build KGs?
 
 
 a set of nodes and edges between them that
@@ -46,7 +46,7 @@ a set of nodes and edges between them that
 layout: default
 ---
 
-# What challenges we face to host a KG(Knowledge graph)?
+# What challenges we face to host a KG?
 
 <v-clicks>
 
