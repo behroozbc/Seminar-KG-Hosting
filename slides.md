@@ -92,6 +92,27 @@ Tourism is one of the most critical sectors of the global economy. Due to its he
 
 - Mostly Creative Common license like CC-BY-SA
 
+
+---
+
+# Knowledge Hosting Paradigms
+
+<v-clicks depth="2">
+
+- KG have a **graph data model** *logically*.
+
+- It can host in other database paradigms.
+
+- Every paradigm has it own benefits and disadvantages.
+- Three Most most popular hosting paradigms for KGs
+  -  relational databases
+  - document stores
+  - graph databases
+</v-clicks>
+
+---
+
+# Relational Databases
 ---
 layout: figure
 figureCaption: Curated cover image for Slidev
