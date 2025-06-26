@@ -82,6 +82,16 @@ a set of nodes and edges between them that
 
 # German Tourism Knowledge Graph (GTKG) 
 
+Tourism is one of the most critical sectors of the global economy. Due to its heterogeneous and fragmented nature, it provides one of the most suitable use cases for knowledge graphs.
+
+- 16 federal states of Germany 
+
+- It is a publicly accessible resource and uses a schema.org-based schema to describe the integrated data.
+
+- It builds around standard semantic technologies like RDF(S), SPARQL, SHACL and widespread technologies like RML. 
+
+- Mostly Creative Common license like CC-BY-SA
+
 ---
 layout: figure
 figureCaption: Curated cover image for Slidev
