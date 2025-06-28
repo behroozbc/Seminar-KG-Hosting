@@ -10,9 +10,9 @@ coverBackgroundSource: unsplash
 coverBackgroundSourceUrl: https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
 hideInToc: true
 themeConfig:
-  paginationX: r
-  paginationY: t
-#   paginationPagesDisabled: [1]
+  paginationX: l
+  paginationY: b
+  paginationPagesDisabled: [1]
 title: Knowledge Hosting
 
 ---
@@ -92,6 +92,19 @@ Tourism is one of the most critical sectors of the global economy. Due to its he
 
 - Mostly Creative Common license like CC-BY-SA
 
+---
+layout: figure
+figureCaption:  An excerpt from the GTKG
+figureFootnoteNumber: 1
+figureUrl: /تصویر صفحه_27-6-2025_8924_.jpeg
+---
+
+### GTKG summary
+
+<Footnotes separator>
+  <Footnote :number=1><a href="https://www.alphaxiv.org/abs/2404.09587" rel="noreferrer" target="_blank">German Tourism Knowledge Graph</a></Footnote>
+</Footnotes>
+
 
 ---
 
@@ -115,18 +128,12 @@ src: ./pages/relational-databases.md
 ---
 
 ---
-layout: figure
-figureCaption: Curated cover image for Slidev
-figureFootnoteNumber: 1
-figureUrl: https://picsum.photos/1920/1080
+src: ./pages/document-model.md
 ---
 
-# figure
-
-<Footnotes separator>
-  <Footnote :number=1><a href="https://picsum.photos/" rel="noreferrer" target="_blank">Picsum</a></Footnote>
-</Footnotes>
-
+---
+src: ./pages/graph-databases.md
+---
 ---
 layout: figure-side
 figureCaption: Curated cover image for Slidev
