@@ -128,6 +128,73 @@ layout: two-cols
 ### Virtual RDF graphs
 
 - This approach have been a popular way to convert relational databases to KG in recent years.
+
+- Do not store a concrete knowledge graph in a relational database.
+
+- Provide an ontology-based access layer over existing relational databases.
+
+```mermaid
+flowchart LR
+SPARQL[SPARQL]
+SQL[SQL]
+RSP["SPARQL solution mappings"]
+SPARQL-- converted  ---SQL -- Transform back ---RSP
+
+```
+
+---
+
+#### How works?
+
+```mermaid {scale: 0.5}
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+db[(Database)]
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+
+ontology[Ontology]
+
+unfolding(unFolding)
+
+sqlQuery("SQL Query")
+
+evaluation(Evaluation)
+sqlR("SQL Result")
+rT("Result Translation")
+mapping[Mapping]
+sparqlAn("SPAEQL Answer")
+End((End))
+
+ontology--> rewriting
+mapping-->unfolding
+db--> ontology
+db --> evaluation
+start--> sparqlQ --> rewriting -->  rewritingQ --> unfolding--> sqlQuery--> evaluation--> sqlR--> rT--> sparqlAn-->End
+```
+
+- Compiling the ontology into the mapping in an offline phase
+
+- Exploiting the constraints over the data to strongly simplify the queries after the unfolding phase
+- Planning query execution using a cost-based model
+
+
+---
+
+#### Advantages and Drawbacks
+
+##### Advantages
+- They do not require any preprocessing on a relational database management system (RDBMS).
+- They allow ontology-based access via mappings and query rewriting (e.g., SPARQL to SQL).
+- They provide a relatively cheap way to build a knowledge graph from relational databases.
+- They provide a smooth integration in industrial standard software environments.
+
+##### Drawbacks
+
+- Many things can go wrong with query rewriting and unfolding (mappings need extra attention).
+- Querying the schema is challenging (due to the underlying relational model).
+- Typically, only limited querying and reasoning capabilities are provided.
 ---
 hide: true
 ---
@@ -163,4 +230,36 @@ hide: true
 
 ---
 
+#### An Implementation
+
+- **Ontop** 
+- Virtual RDF graph framework (Xiao et al. 2020).
+- Distributed under the Apache 2.0 license.
+- Supports customized mapping language and R2RML (RDB to RDF Mapping Language).
+- Handles a subset of SPARQL 1.1 with optimizations for Join, Union, and LeftJoin operations.
+- Implements reasoning through query rewriting, supporting the OWL 2 QL profile.
+
+[comment]: <> (عکسش رو بزارم با گیتهابش رو)
+
+
+---
+
 ## Summarize
+
+- **Data Model**: Relational model struggles with flexible schemas of knowledge graphs, where data and schema boundaries blur, unlike rigid, decoupled schemas in relational databases.
+
+
+
+- **Heterogeneity**: Representing graph models requires numerous queries and costly joins, making it inefficient.
+
+
+
+- **Velocity**: Inference generating new TBox knowledge may necessitate schema recompilation, an expensive operation.
+
+
+
+- **Relationship Representation**: Modeling relationships like inheritance is complex.
+
+
+
+- **Entailment Rules**: Implementing RDFS entailment rules is not straightforward and often requires application logic or external rules.
