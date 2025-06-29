@@ -134,6 +134,7 @@ src: ./pages/document-model.md
 ---
 src: ./pages/graph-databases.md
 ---
+
 ---
 layout: figure-side
 figureCaption: Curated cover image for Slidev
