@@ -1,1 +1,0 @@
-import{d as r,f as t,o as n,t as o}from"./modules/vue-Ds8lG0GA.js";import{u as s}from"./slidev/context-qw0x-I65.js";const a={key:0},i=["href"],f=r({__name:"TextWithOptionalLink",props:{link:{},text:{}},setup(p){return s(),(e,l)=>e.link?(n(),t("a",{key:1,href:e.link,rel:"noreferrer",target:"_blank"},o(e.text),9,i)):(n(),t("span",a,o(e.text),1))}});export{f as _};
