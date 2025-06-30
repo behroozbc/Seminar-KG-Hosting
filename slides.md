@@ -1,5 +1,4 @@
 ---
-# You can also start simply with 'default'
 theme: academic
 layout: cover
 class: text-white
