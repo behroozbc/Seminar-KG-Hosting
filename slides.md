@@ -14,7 +14,7 @@ themeConfig:
   paginationY: b
   paginationPagesDisabled: [1]
 title: Knowledge Hosting
-
+transition: fade
 ---
 
 # Knowledge Hosting
@@ -80,34 +80,6 @@ a set of nodes and edges between them that
 
 ---
 
-# German Tourism Knowledge Graph (GTKG) 
-
-Tourism is one of the most critical sectors of the global economy. Due to its heterogeneous and fragmented nature, it provides one of the most suitable use cases for knowledge graphs.
-
-- 16 federal states of Germany 
-
-- It is a publicly accessible resource and uses a schema.org-based schema to describe the integrated data.
-
-- It builds around standard semantic technologies like RDF(S), SPARQL, SHACL and widespread technologies like RML. 
-
-- Mostly Creative Common license like CC-BY-SA
-
----
-layout: figure
-figureCaption:  An excerpt from the GTKG
-figureFootnoteNumber: 1
-figureUrl: /تصویر صفحه_27-6-2025_8924_.jpeg
----
-
-### GTKG summary
-
-<Footnotes separator>
-  <Footnote :number=1><a href="https://www.alphaxiv.org/abs/2404.09587" rel="noreferrer" target="_blank">German Tourism Knowledge Graph</a></Footnote>
-</Footnotes>
-
-
----
-
 # Knowledge Hosting Paradigms
 
 <v-clicks depth="2">
@@ -136,6 +108,14 @@ src: ./pages/graph-databases.md
 ---
 
 ---
+src: ./pages/example.md
+---
+
+---
+src: ./pages/summary.md
+---
+
+---
 layout: figure-side
 figureCaption: Curated cover image for Slidev
 figureFootnoteNumber: 1
@@ -152,37 +132,6 @@ figureUrl: https://picsum.photos/1024/768
   <Footnote :number=1><a href="https://picsum.photos/" rel="noreferrer" target="_blank">Picsum</a></Footnote>
 </Footnotes>
 
----
-layout: center
-class: "text-center"
----
-
-# Footnotes & Footnote
-
-<span class="font-extralight">
-  <q>Give credit where credit is due</q>
-  <sup>1</sup>
-</span>
-
-<Footnotes separator>
-  <Footnote :number=1>Smart person</Footnote>
-</Footnotes>
-
----
-layout: center
-class: "text-center"
----
-
-# Pagination
-
-<span class="font-extralight">Enabled by default</span>
-
-<img
-  class="absolute transform rotate-z-180 -top-0.9 -right-21.5 w-36"
-  src="/box.svg"
-/>
-
-<p class="absolute font-extralight right-14 transform rotate-8 top-4">Here!</p>
 
 ---
 layout: index
