@@ -55,14 +55,21 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 
 - Use FROM `NAMED` or `GRAPH` keywords to specify a named graph, scoping triple patterns to the query's context.
 ---
-
+layout: center
+class: "text-center"
+---
 ### Visualization
 
+<!--
 - Offers three main visualizations: 
     - Class hierarchy
     - Class relationships
     - Visual graph.
-
+-->
+---
+layout: figure-side
+figureCaption:  shows schema:Thing as the largest circle, a top-level class in schema.org.
+figureUrl: ./تصویر صفحه_30-6-2025_234128_.jpeg
 ---
 
 #### Class hierarchy
@@ -71,8 +78,11 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 - Each circle represents a class; smaller circles inside indicate subclasses.
 - Circle size reflects the number of class instances.
 - Useful for "visual debugging" to identify errors (e.g., stray classes from typos in class IRIs).
-- Example: Fig. 19.8 shows schema:Thing as the largest circle, a top-level class in schema.org.
 
+---
+layout: figure-side
+figureCaption:  indicates ~520K links from schema:Place to schema:GeoCoordinates via the schema:geo property.
+figureUrl: ./تصویر صفحه_30-6-2025_234438_.jpeg
 ---
 
 #### Class relationships
@@ -80,7 +90,10 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 - Shows the number of links between instances of class pairs.
 - Highlights highly connected class pairs, revealing key types in the knowledge graph.
 
-- Example: Fig. 19.9 indicates ~520K links from schema:Place to schema:GeoCoordinates via the schema:geo property.
+---
+layout: figure-side
+figureCaption:  visualizes showing 1-hop connections by default.
+figureUrl: ./تصویر صفحه_30-6-2025_234714_.jpeg
 ---
 
 #### Visual graph
@@ -88,7 +101,6 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 - Provides a graph-based view for a specific resource IRI or a subgraph from a custom SPARQL query.
 - Displays incoming and outgoing edges for a selected node.
 - Configurable and interactive, allowing users to expand additional nodes.
-- Example: Fig. 19.10 visualizes the instance from Fig. 19.1, showing 1-hop connections by default.
 ---
 layout: two-cols-header 
 ---
