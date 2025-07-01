@@ -33,30 +33,41 @@ There are various operations that can be done on a relation.
 layout: two-cols 
 --- 
 
-### Storing Knowledge Graphs 
-- Large knowledge graphs may lead to large tables.
+### Storing KGs 
+
+<v-clicks depth="3">
+
+- Large KGs may lead to large tables.
 
 - Querying Challenge
   - Requires any type joins, potentially processing vast data.
     - A graph with 1M triples could involve 10<sup>12</sup> rows in a naïve implementation.
-
+</v-clicks>
 
 
 ### Domain and Range Definitions (RDF Schema)
+
+<v-clicks>
 
 - Domain: Specifies classes to which properties apply.
 
 - Range: Defines the type of value a property can take.
 
 - **Challenge**: Integrity constraints can partially enforce domain/range in a closed-world setting, but full RDFS semantics must be handled by applications.
+</v-clicks>
+
 ::right::
+
 ### Class and Property Hierarchies
+
+<v-clicks>
 
 - Representation requires multiple auxiliary tables and joins.
 
 - Application must hardwire semantics for hierarchies.
 
 - Inheritance Issue: Property inheritance between subclasses (e.g., range inheritance) is complex and must be managed by the database designer.
+</v-clicks>
 
 ### Impact on Declarative Nature 
 
@@ -127,11 +138,16 @@ layout: two-cols
 
 ### Virtual RDF graphs
 
+<v-clicks>
+
 - This approach have been a popular way to convert relational databases to KG in recent years.
 
 - Do not store a concrete knowledge graph in a relational database.
 
 - Provide an ontology-based access layer over existing relational databases.
+
+</v-clicks>
+<v-click>
 
 ```mermaid
 flowchart LR
@@ -142,6 +158,7 @@ SPARQL-- converted  ---SQL -- Transform back ---RSP
 
 ```
 
+</v-click>
 ---
 
 #### How works?
