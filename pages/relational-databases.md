@@ -1,23 +1,30 @@
+---
+
 # Relational Databases
 [comment]: <> (من اینو بهتره خلاصه ترش بکنم. به این شکل که یه بخشی اش بره داخل اسلاید های اضافی)
 - **Relational Model (Codd 1970<sup>1</sup>)**: Decouples logical data representation from physical implementation, Isolates data from hardware and application logic (program).
-
 - **Structured Query Language (SQL)**: High-level declarative language reflecting relational algebra for querying relational databases.
-
-- **Relational Model Storage**: Data stored as tuples in structures called relations (tables).
-
+- **Relational Model Storage**: Data stored as tuples in structures called relations (tables) and you can querying it with SQL.
 - **Relation Structure**:
-
   - **Header**: Finite set of attribute names (columns).
-
   - **Body**: Set of tuples (rows).
-- **Example Relation**: Customer (*Customer_ID*, Tax_ID, Name, Address, City, State, Zip, Phone, Email, Sex).
 
-[comment]: <> (عکس از یک جدوله)
+
+
 - **Abstract Access Layer**: Provides applications with a way to access, store, and modify data.
 <Footnotes separator>
   <Footnote :number=1><a href="https://en.wikipedia.org/wiki/Relational_model" rel="noreferrer" target="_blank">Codd</a></Footnote>
 </Footnotes>
+
+---
+layout: figure
+figureCaption:  An example
+figureUrl: ./rd-example.jpeg
+---
+
+#### Example Relation
+
+Customer (*Customer_ID*, Tax_ID, Name, Address, City, State, Zip, Phone, Email, Sex).
 
 ---
 
@@ -29,24 +36,28 @@ There are various operations that can be done on a relation.
 - Projection  (ℿ)
 - Selection (σ)
 -  set union, set difference, and exist ...
----
-layout: two-cols 
+
 --- 
 
-### Storing KGs 
+<v-click>
 
+### Storing KGs 
+</v-click>
 <v-clicks depth="3">
 
 - Large KGs may lead to large tables.
-
 - Querying Challenge
   - Requires any type joins, potentially processing vast data.
     - A graph with 1M triples could involve 10<sup>12</sup> rows in a naïve implementation.
 </v-clicks>
 
+<br>
+<v-click>
+
 
 ### Domain and Range Definitions (RDF Schema)
 
+</v-click>
 <v-clicks>
 
 - Domain: Specifies classes to which properties apply.
@@ -56,7 +67,7 @@ layout: two-cols
 - **Challenge**: Integrity constraints can partially enforce domain/range in a closed-world setting, but full RDFS semantics must be handled by applications.
 </v-clicks>
 
-::right::
+---
 
 ### Class and Property Hierarchies
 
@@ -68,37 +79,54 @@ layout: two-cols
 
 - Inheritance Issue: Property inheritance between subclasses (e.g., range inheritance) is complex and must be managed by the database designer.
 </v-clicks>
+<v-click>
 
 ### Impact on Declarative Nature 
+</v-click>
+<v-click>
 
 - **Application logic must hardwire semantics of modeling languages (e.g., RDFS), reducing the declarative nature and reusability of knowledge graphs.**
-
+</v-click>
 
 
 ---
 
 ### Statement table
+<v-clicks>
 
 - A simple way.
 
-#### How?:
+**How?**:
+
 - RDF triples representing the knowledge graph can directly be stored in this table without any change
 
-#### Problems
+**Problems**
 
 -  The data are not normalized. 
 
 - A growing number of triples result in inefficient self-joins
+</v-clicks>
+---
+layout: figure
+figureCaption:  An example
+figureUrl: ./Statement table.jpeg
+---
 ---
 
 ### Class-centric table 
 
+<v-clicks>
 
 - Creates one table per class type to store all property values for that class.
 
 - Properties may appear in multiple tables if shared across classes.
+</v-clicks>
+<v-click>
 
-### Table Structure:
+**Table Structure**:
+
+</v-click>
+<v-clicks>
 
 - Each class in the knowledge graph is represented as a table.
 
@@ -107,19 +135,31 @@ layout: two-cols
 - Properties without value assertions in the knowledge graph may result in columns with NULL values, leading to sparse tables (many NULLs).
 
 - For Queries use join with other classes(table). 
+</v-clicks>
 
+---
+layout: figure
+figureCaption:  An example
+figureUrl: ./Class-centric.jpeg
+---
 ---
 
 #### Drawbacks
+<v-clicks depth="2">
 
 1. Adding new properties and classes is cumbersome as the schema must be recompiled.
 
 2.  the level of normalization is not enough to handle multivalued properties as they lead to repetitions of tuples for each value of a property.
   
     - a hotel has multiple descriptions, we would need to create another tuple for the same hotel with a different description but repetitive values for all other columns.
+</v-clicks>
+---
+layout: two-cols
 ---
 
 ### Property-centric
+
+<v-clicks>
 
 -  This approach use one table per property
 
@@ -128,12 +168,28 @@ layout: two-cols
   - object
 - This approach easily allows multivalued properties.
 - But, duplication of subjects is still necessary.
+</v-clicks>
+::right::
+<br>
 
-#### drawbacks
+<v-click>
+
+ **Drawbacks**
+ </v-click>
+<v-clicks>
 
 - Adding a new property requires the creation of a new table and, therefore, a recompilation of the schema.
 
 - A common operation like retrieving properties defined on a single instance requires joins over a vast number of tables.
+</v-clicks>
+---
+layout: figure
+figureCaption:  An example
+figureUrl: ./Property-centric.jpeg
+---
+---
+
+
 ---
 
 ### Virtual RDF graphs
