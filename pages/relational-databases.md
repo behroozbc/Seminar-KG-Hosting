@@ -181,20 +181,43 @@ start--> sparqlQ --> rewriting -->  rewritingQ --> unfolding--> sqlQuery--> eval
 
 
 ---
+layout: two-cols
+---
 
 #### Advantages and Drawbacks
 
+
+<v-click>
+
 ##### Advantages
-- They do not require any preprocessing on a relational database management system (RDBMS).
-- They allow ontology-based access via mappings and query rewriting (e.g., SPARQL to SQL).
-- They provide a relatively cheap way to build a knowledge graph from relational databases.
+</v-click>
+
+<v-clicks>
+
+- They do not require any preprocessing on a RDBMS  .
+- They allow ontology-based access via mappings and query rewriting.
+  - SPARQL to SQL
+- They provide a relatively cheap way to build a KG from relational databases.
 - They provide a smooth integration in industrial standard software environments.
+</v-clicks>
+
+::right::
+
+<br>
+<v-click>
 
 ##### Drawbacks
 
-- Many things can go wrong with query rewriting and unfolding (mappings need extra attention).
-- Querying the schema is challenging (due to the underlying relational model).
+</v-click>
+
+<v-clicks>
+
+- Many things can go wrong with query rewriting and unfolding.
+  - mappings need extra attention
+- Querying the schema is challenging.
+  - Due to the underlying relational model.
 - Typically, only limited querying and reasoning capabilities are provided.
+</v-clicks>
 ---
 hide: true
 ---
@@ -228,23 +251,30 @@ hide: true
   <Footnote :number=1><a href="https://en.wikipedia.org/wiki/Relational_model" rel="noreferrer" target="_blank">Codd</a></Footnote>
 </Footnotes>
 
+
 ---
 
 #### An Implementation
 
+<v-clicks>
+
 - **Ontop** 
+    ![Ontop](https://ontop-vkg.org/ontop-logo.png)
 - Virtual RDF graph framework (Xiao et al. 2020).
 - Distributed under the Apache 2.0 license.
 - Supports customized mapping language and R2RML (RDB to RDF Mapping Language).
 - Handles a subset of SPARQL 1.1 with optimizations for Join, Union, and LeftJoin operations.
 - Implements reasoning through query rewriting, supporting the OWL 2 QL profile.
+</v-clicks>
 
-[comment]: <> (عکسش رو بزارم با گیتهابش رو)
+
 
 
 ---
 
 ## Summarize
+
+<v-clicks>
 
 - **Data Model**: Relational model struggles with flexible schemas of knowledge graphs, where data and schema boundaries blur, unlike rigid, decoupled schemas in relational databases.
 
@@ -263,3 +293,5 @@ hide: true
 
 
 - **Entailment Rules**: Implementing RDFS entailment rules is not straightforward and often requires application logic or external rules.
+
+</v-clicks>

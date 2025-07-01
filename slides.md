@@ -2,7 +2,7 @@
 theme: academic
 layout: cover
 class: text-white
-coverAuthor: [behrooz]
+coverAuthor: [behrooz bozorgchamy]
 coverAuthorUrl: [https://www.behroozbc.ir]
 coverBackgroundUrl: /presentation.jpg
 coverBackgroundSource: unsplash
@@ -14,6 +14,7 @@ themeConfig:
   paginationPagesDisabled: [1]
 title: Knowledge Hosting
 transition: fade
+download: true
 ---
 
 # Knowledge Hosting
