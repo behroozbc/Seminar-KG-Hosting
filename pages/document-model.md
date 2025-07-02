@@ -1,5 +1,7 @@
 # Document Model
 
+<v-clicks depth="2">
+
 - Stores data as nested key-value pairs, organized into documents, similar to tuples in relational databases.
 
 - Gained popularity with big and streaming data due to flexible schema and easy scalability.
@@ -11,36 +13,85 @@
 - Ways to host KG
     - Nested objects
     - The adoption of document references
-
+</v-clicks>
 ---
 
 ## Nested objects
 
+<v-clicks>
+
 - The native way of storing documents
 - everything about an instance is stored in one document.
 - this makes it easier to access individual documents.
-- But, the updates are problematic as a nested object appearing in many documents needs to be updated
-
+- **But**, the updates are problematic as a nested object appearing in many documents needs to be updated
+</v-clicks>
 ---
 
 ### Example
 
--  Each nested object without an id field represents a blank node.
+````md magic-move {lines: true}
+```ts {*|2-3|10-15|*}
+{
+  "id": "166417787",
+  "@type": "Hotel",
+  "description": "Das gemütliche familiär geführte Haus liegt ruhig, in Waldnähe, dennoch verkehrsgünstig.",
+  "geo": {
+    "latitude": "49.26178",
+    "longitude": "7.1033"
+  },
+  "name": "Hotel-Restaurant La Fontana",
+  "address": {
+    "addressCountry": {
+      "@type": "Country",
+      "name": "DE"
+    }
+  }
+}
+```
+````
+<v-click at="2">
 
+-  Each nested object without an id field represents a blank node.
+</v-click>
 ---
 
 ## Document references
 
+<v-clicks>
+
 - Splits documents into conceptually cohesive collections.
 - Stores references to objects instead of nesting them, avoiding update issues associated with nested objects.
 - Requires application-level implementation of Join operations, reducing distinction from relational databases.
+</v-clicks>
+---
 
+````md magic-move {lines:true}
+```ts {*}
+{
+    "id": "166417787",
+    "@type": "Hotel",
+    "description": "Das gemütliche familiär geführte Haus liegt ruhig, in Waldnähe, dennoch verkehrsgünstig.",
+    "geo": "...",
+    "name": "Hotel-Restaurant La Fontana",
+    "address": "-123"
+},
+{
+    "id": "-123",
+    "addressCountry": {
+      "@type": "Country",
+      "name": "DE"
+    }
+}
+```
+````
 ---
 
 ## Some Implementations
 
-* HexaDB
+- Mongodb
 - RocksDB
+    - Open Source
+    * Developed and maintained by Facebook.
 - AllegroGraph
 ---
 

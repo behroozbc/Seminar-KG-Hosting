@@ -4,9 +4,9 @@ layout: cover
 class: text-white
 coverAuthor: [behrooz bozorgchamy]
 coverAuthorUrl: [https://www.behroozbc.ir]
-coverBackgroundUrl: /presentation.jpg
+coverBackgroundUrl: /logan-voss-d8AURrtQXmE-unsplash.jpg
 coverBackgroundSource: unsplash
-coverBackgroundSourceUrl: https://images.unsplash.com/photo-1594122230689-45899d9e6f69?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80
+coverBackgroundSourceUrl: https://images.unsplash.com/photo-1738082956220-a1f20a8632ce?ixlib=rb-4.1.0&q=85&fm=jpg&crop=entropy&cs=srgb&dl=logan-voss-d8AURrtQXmE-unsplash.jpg&w=1920
 hideInToc: true
 themeConfig:
   paginationX: l
@@ -115,3 +115,7 @@ src: ./pages/example.md
 src: ./pages/summary.md
 ---
 
+---
+src: ./pages/test.md
+hide: true
+---
