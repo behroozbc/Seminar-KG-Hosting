@@ -11,6 +11,7 @@
 | JOINs required to combine data from different tables. | Allows embedding documents; JOINs required when using identifiers to link to other documents. | JOINs are required, but they are handled differently than relational databases. |
 |  No native reasoning.|  No native reasoning. | Native logical reasoning.|
 </Transform>
+
 <!--
 
 Challenges of Hosting Knowledge Graphs:

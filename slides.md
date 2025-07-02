@@ -90,9 +90,9 @@ a set of nodes and edges between them that
 
 - Every paradigm has it own benefits and disadvantages.
 - Three Most most popular hosting paradigms for KGs
-  -  relational databases
-  - document stores
-  - graph databases
+  - Relational databases
+  - Document stores
+  - Graph databases
 </v-clicks>
 
 ---

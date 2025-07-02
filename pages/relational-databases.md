@@ -219,6 +219,174 @@ SPARQL-- converted  ---SQL -- Transform back ---RSP
 ---
 
 #### How works?
+<v-switch>
+<template #1>
+
+```mermaid
+flowchart LR
+start((Start))
+```
+</template>
+<template #2>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+start--> sparqlQ
+```
+</template>
+<template #3>
+```mermaid
+flowchart LR
+start((Start))
+ontology[Ontology]
+sparqlQ(SPARQL Query)
+ontology--> rewriting
+rewriting("Rewriting")
+start--> sparqlQ --> rewriting 
+```
+
+ The SPARQL query q is rewritten with respect to the ontology.
+</template>
+<template #4>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+ontology--> rewriting
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+start--> sparqlQ --> rewriting -->  rewritingQ
+```
+</template>
+<template #5>
+```mermaid
+flowchart LR
+start((Start))
+db[(Database)]
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+mapping[Mapping]
+db--> ontology
+ontology--> rewriting
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding
+```
+ The middleware unfolds the query q with respect to the mapping from the schema of
+ the data source to the ontology.
+</template>
+<template #6>
+```mermaid
+flowchart LR
+start((Start))
+mapping[Mapping]
+db[(Database)]
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+db--> ontology
+ontology--> rewriting
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+sqlQuery("SQL Query")
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding--> sqlQuery
+```
+
+</template>
+<template #7>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+mapping[Mapping]
+db--> ontology
+evaluation(Evaluation)
+ontology--> rewriting
+db[(Database)]
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+sqlQuery("SQL Query")
+db --> evaluation
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding--> sqlQuery--> evaluation
+```
+The generated SQL query is ready to be evaluated
+ over the data source.
+</template>
+<template #8>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+db--> ontology
+evaluation(Evaluation)
+ontology--> rewriting
+db[(Database)]
+mapping[Mapping]
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+sqlQuery("SQL Query")
+sqlR("SQL Result")
+db --> evaluation
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding--> sqlQuery--> evaluation-->sqlR
+```
+</template>
+<template #9>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+db--> ontology
+evaluation(Evaluation)
+ontology--> rewriting
+db[(Database)]
+mapping[Mapping]
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+sqlQuery("SQL Query")
+sqlR("SQL Result")
+rT("Result Translation")
+db --> evaluation
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding--> sqlQuery--> evaluation-->sqlR-->rT
+```
+</template>
+<template #10>
+```mermaid
+flowchart LR
+start((Start))
+sparqlQ(SPARQL Query)
+ontology[Ontology]
+unfolding(Unfolding)
+db--> ontology
+mapping[Mapping]
+evaluation(Evaluation)
+ontology--> rewriting
+db[(Database)]
+mapping-->unfolding
+rewriting("Rewriting")
+rewritingQ("Rewriting Query")
+sqlQuery("SQL Query")
+sqlR("SQL Result")
+rT("Result Translation")
+sparqlAn("SPARQL Answer")
+db --> evaluation
+start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding--> sqlQuery--> evaluation-->sqlR-->rT--> sparqlAn
+```
+</template>
+<template #11>
 
 ```mermaid {scale: 0.5}
 flowchart LR
@@ -230,7 +398,7 @@ rewritingQ("Rewriting Query")
 
 ontology[Ontology]
 
-unfolding(unFolding)
+unfolding(Unfolding)
 
 sqlQuery("SQL Query")
 
@@ -238,7 +406,7 @@ evaluation(Evaluation)
 sqlR("SQL Result")
 rT("Result Translation")
 mapping[Mapping]
-sparqlAn("SPAEQL Answer")
+sparqlAn("SPARQL Answer")
 End((End))
 
 ontology--> rewriting
@@ -248,10 +416,16 @@ db --> evaluation
 start--> sparqlQ --> rewriting -->  rewritingQ --> unfolding--> sqlQuery--> evaluation--> sqlR--> rT--> sparqlAn-->End
 ```
 
-- Compiling the ontology into the mapping in an offline phase
 
-- Exploiting the constraints over the data to strongly simplify the queries after the unfolding phase
-- Planning query execution using a cost-based model
+- Compiling the ontology into the mapping in an offline phase.
+
+- Exploiting the constraints over the data to strongly simplify the queries after the unfolding phase.
+- Planning query execution using a cost-based model.
+
+-  A direct implementation of this workflow may be highly inefficient, some optimizations are required.
+
+</template>
+</v-switch>
 
 
 ---

@@ -84,12 +84,14 @@ layout: two-cols
 
 - **Triplestores**: Native reasoning support via ontology languages; cumbersome to make statements about statements due to RDF model limitations.
 - **Property Graphs**: Natively support statements about relationships but lack built-in reasoning.
-- **Extensions**: Named Graphs and RDF-Star (Sect. 13.1.1) allow adding metadata (e.g., temporal/spatial validity, provenance) to triples.
+- **Extensions**: Named Graphs and RDF-Star allow adding metadata (e.g., temporal/spatial validity, provenance) to triples.
 </v-clicks>
 
 --- 
 
 #### Bridging Graph Models
+
+<v-clicks>
 
 - Efforts to combine RDF and property graph capabilities:
     - Neo4J Neosemantics Plugin: Supports RDF(S), OWL, SKOS, and SPARQL for property graphs.
@@ -97,3 +99,4 @@ layout: two-cols
 - Ongoing standardization for property graphs and general graph databases.
 
 
+</v-clicks>

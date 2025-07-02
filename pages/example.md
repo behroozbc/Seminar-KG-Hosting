@@ -32,6 +32,8 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 </Footnotes>
 
 ---
+layout: two-cols-header
+---
 
 ### Storing
 
@@ -46,8 +48,8 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 [comment]: <> (نمونه ها)
 ---
 
-
 ### Querying
+
 
 - Provides a graphical interface and API for executing SPARQL 1.1 queries on RDF graphs.
 
@@ -58,6 +60,7 @@ figureUrl: ./تصویر صفحه_27-6-2025_8924_.jpeg
 layout: center
 class: "text-center"
 ---
+
 ### Visualization
 
 <!--
@@ -102,26 +105,38 @@ figureUrl: ./تصویر صفحه_30-6-2025_234714_.jpeg
 - Displays incoming and outgoing edges for a selected node.
 - Configurable and interactive, allowing users to expand additional nodes.
 ---
-layout: two-cols-header 
----
 
 ### Reasoning
 
-::left::
+<v-clicks depth="2">
+
 - GraphDB Reasoner:
     - Based on W3C recommendations, infers new facts using forward chaining entailment rules.
     - Employs a materialization strategy, applying inference rules repeatedly to explicit statements until no new implicit statements are produced.
     - Inferred statements are generated at load time, leading to longer loading times but faster query execution.
+
 - Reasoning Profiles:
     - Supports RDF(S), RDFS-Plus, and OWL2 profiles.
     - **OWL-Horst**: Non-W3C profile with restrictions on OWL RL for improved reasoning performance on large datasets.
     - **RDFS-Plus**: Non-W3C profile used in the GTKG, supports subsumption reasoning for types/properties and reasoning for inverse/transitive properties.
-::right::
+
+</v-clicks>
+---
+
+### Reasoning
+<v-clicks>
+
 - Virtual Named Graphs:
     - Two built-in named graphs:
         - Explicit Named Graph: Contains only explicitly loaded triples.
         - Implicit Named Graph: Contains only inferred triples.
     - Queries can specify whether to include only explicit statements or both explicit and implicit statements.
+</v-clicks>
+
+---
+layout: figure
+figureCaption:  Query
+figureUrl: ./query-example.jpeg
 ---
 
 ### Query Example
