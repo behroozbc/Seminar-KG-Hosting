@@ -88,26 +88,35 @@
 
 ## Some Implementations
 
+<v-clicks>
+
 - Mongodb
 - RocksDB
     - Open Source
     * Developed and maintained by Facebook.
 - AllegroGraph
+</v-clicks>
 ---
 
 ## Semantic Annotation vs. Knowledge Graph
+
+<v-clicks>
+
 - Semantic Annotation: Focuses on publishing machine-understandable annotations for web pages.
     - Efficiently achieved via one-to-one mapping between a JSON-LD document and its corresponding web page.
     - Document stores excel due to straightforward document-to-annotation correspondence.
 - Knowledge Graph: Less suitable for document stores.
     - Challenges in leveraging graph data connectedness and supporting reasoning.
     - Querying and reasoning are more efficient when facts are grouped, rather than scattered across multiple documents.
-
+</v-clicks>
 ---
 
 ## In the end
+
+<v-clicks>
 
 - Schemaless design with looser consistency checking, supporting heterogeneity and velocity.
 - Allows instances to have varied metadata and multiple property values, avoiding null values or duplications seen in relational databases.
 - Native JSON support enables **O(1)** access for retrieving instances in JSON-LD format, where each instance is a document.
 
+</v-clicks>
