@@ -21,8 +21,8 @@
 <v-clicks>
 
 - The native way of storing documents
-- everything about an instance is stored in one document.
-- this makes it easier to access individual documents.
+- Everything about an instance is stored in one document.
+- This makes it easier to access individual documents.
 - **But**, the updates are problematic as a nested object appearing in many documents needs to be updated
 </v-clicks>
 ---

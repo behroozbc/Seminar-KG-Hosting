@@ -99,7 +99,7 @@ There are various operations that can be done on a relation.
 
 **How?**:
 
-- RDF triples representing the knowledge graph can directly be stored in this table without any change
+- RDF triples representing the KG can directly be stored in this table without any change
 
 **Problems**
 
@@ -129,11 +129,11 @@ figureUrl: ./Statement table.jpeg
 </v-click>
 <v-clicks>
 
-- Each class in the knowledge graph is represented as a table.
+- Each class in the KG is represented as a table.
 
 - Properties of the class are represented as columns.
 
-- Properties without value assertions in the knowledge graph may result in columns with NULL values, leading to sparse tables (many NULLs).
+- Properties without value assertions in the KG may result in columns with NULL values, leading to sparse tables (many NULLs).
 
 - For Queries use join with other classes(table). 
 </v-clicks>
@@ -150,9 +150,9 @@ figureUrl: ./Class-centric.jpeg
 
 1. Adding new properties and classes is cumbersome as the schema must be recompiled.
 
-2.  the level of normalization is not enough to handle multivalued properties as they lead to repetitions of tuples for each value of a property.
+2.  The level of normalization is not enough to handle multivalued properties as they lead to repeat of tuples for each value of a property.
   
-    - a hotel has multiple descriptions, we would need to create another tuple for the same hotel with a different description but repetitive values for all other columns.
+    - A hotel has multiple descriptions, we would need to create another tuple for the same hotel with a different description but repetitive values for all other columns.
 </v-clicks>
 ---
 layout: two-cols
@@ -165,8 +165,8 @@ layout: two-cols
 -  This approach use one table per property
 
 - Each table contains two columns
-  - subject
-  - object
+  - Subject
+  - Object
 - This approach easily allows multivalued properties.
 - But, duplication of subjects is still necessary.
 </v-clicks>
@@ -240,9 +240,11 @@ start--> sparqlQ
 flowchart LR
 start((Start))
 ontology[Ontology]
+db[(Database)]
 sparqlQ(SPARQL Query)
 ontology--> rewriting
 rewriting("Rewriting")
+db--> ontology
 start--> sparqlQ --> rewriting 
 ```
 
@@ -253,10 +255,12 @@ start--> sparqlQ --> rewriting
 flowchart LR
 start((Start))
 sparqlQ(SPARQL Query)
+db[(Database)]
 ontology[Ontology]
 ontology--> rewriting
 rewriting("Rewriting")
 rewritingQ("Rewriting Query")
+db--> ontology
 start--> sparqlQ --> rewriting -->  rewritingQ
 ```
 </template>
@@ -532,7 +536,7 @@ hide: true
 
 
 
-- **Velocity**: Inference generating new TBox knowledge may necessitate schema recompilation, an expensive operation.
+- **Velocity**: Inference generating new TBox knowledge may required schema recompilation, an expensive operation.
 
 
 

@@ -71,14 +71,14 @@ layout: two-cols
 <v-clicks>
 
 
-- Built on W3C standards (RDF, RDFS, OWL, SPARQL), facilitating vendor migration and tooling development.
+- Built on W3C standards (RDF, RDFS, OWL, SPARQL), simplifying vendor migration and tooling development.
 - Can scale to trillions of triples for knowledge graphs.
 </v-clicks>
 ::right::
 
 <v-click>
 
-#### Comparison with Property Graphs
+#### VS Property Graphs
 </v-click>
 <v-clicks>
 

@@ -53,7 +53,7 @@ a set of nodes and edges between them that
   - might have billions of facts.
 - Data model
   - A KG is technically a semantic network.
-  - a directed or undirected graph consisting of vertices which represent concepts,
+  - A directed or undirected graph consisting of vertices which represent concepts,
  and edges, which represent semantic relations between concepts.
  - Heterogeneity
    - KGs by nature have a flexible schema and the host have to support it.
@@ -73,9 +73,9 @@ a set of nodes and edges between them that
 - Points of view
   - Different users or applications may need to interact with the same KG in distinct ways.
   - The hosting solution should allow the data to be viewed or processed differently depending on the use case.
-    - applying specific rules, filters, or inference logic to suit each scenario.
+    - Applying specific rules, filters, or inference logic to suit each scenario.
 - Deployment
-  - the hosting solution provides various Application Programming Interfaces (APIs) and query interfaces and supports different formats to enable a variety of applications.
+  - The hosting solution provides various Application Programming Interfaces (APIs) and query interfaces and supports different formats to enable a variety of applications.
 </v-clicks>
 
 ---
