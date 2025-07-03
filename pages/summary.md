@@ -1,6 +1,6 @@
 
 
-# In the end
+# Thanks
 <Transform :scale="0.8">
 
 |  Relational database      | Document database     | Graph database (triplestore) |
