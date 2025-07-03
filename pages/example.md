@@ -56,6 +56,14 @@ layout: two-cols-header
 - Queries run on the default graph (union of all named graphs in the repository) unless a named graph is specified.
 
 - Use FROM `NAMED` or `GRAPH` keywords to specify a named graph, scoping triple patterns to the query's context.
+
+---
+layout: figure
+figureCaption:  Query
+figureUrl: ./query-example.jpeg
+---
+
+### Query Example
 ---
 layout: center
 class: "text-center"
@@ -133,11 +141,4 @@ figureUrl: ./تصویر صفحه_30-6-2025_234714_.jpeg
     - Queries can specify whether to include only explicit statements or both explicit and implicit statements.
 </v-clicks>
 
----
-layout: figure
-figureCaption:  Query
-figureUrl: ./query-example.jpeg
----
-
-### Query Example
 

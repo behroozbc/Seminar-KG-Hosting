@@ -4,13 +4,13 @@
 <v-clicks>
 
 - **Relational Model (Codd 1970<sup>1</sup>)**: Decouples logical data representation from physical implementation, Isolates data from hardware and application logic (program).
-- **Structured Query Language (SQL)**: High-level declarative language reflecting relational algebra for querying relational databases.
+- **Structured Query Language (SQL)**: High-level declarative language reflecting relational algebra for querying relational databases. And support various operations like Join, Projection  (ℿ) and Selection (σ)....
 - **Relational Model Storage**: Data stored as tuples in structures called relations (tables) and you can querying it with SQL.
 - **Relation Structure**:
   - **Header**: Finite set of attribute names (columns).
   - **Body**: Set of tuples (rows).
 
-- **Abstract Access Layer**: Provides applications with a way to access, store, and modify data.
+<!-- - **Abstract Access Layer**: Provides applications with a way to access, store, and modify data. -->
 </v-clicks>
 <Footnotes separator>
   <Footnote :number=1><a href="https://en.wikipedia.org/wiki/Relational_model" rel="noreferrer" target="_blank">Codd</a></Footnote>
@@ -26,17 +26,6 @@ figureUrl: ./rd-example.jpeg
 
 Customer (*Customer_ID*, Tax_ID, Name, Address, City, State, Zip, Phone, Email, Sex).
 
----
-
-# Relational Databases 
-## Operations
-
-There are various operations that can be done on a relation.
-
-- Join
-- Projection  (ℿ)
-- Selection (σ)
--  set union, set difference, and exist ...
 
 --- 
 
@@ -78,7 +67,7 @@ There are various operations that can be done on a relation.
 
 - Application must hardwire semantics for hierarchies.
 
-- Inheritance Issue: Property inheritance between subclasses (e.g., range inheritance) is complex and must be managed by the database designer.
+- Property inheritance between subclasses (e.g., range inheritance) is complex and must be managed by the database designer.
 </v-clicks>
 <v-click>
 
@@ -248,7 +237,7 @@ db--> ontology
 start--> sparqlQ --> rewriting 
 ```
 
- The SPARQL query q is rewritten with respect to the ontology.
+ The SPARQL query is rewritten with respect to the ontology.
 </template>
 <template #4>
 ```mermaid
@@ -280,7 +269,7 @@ rewriting("Rewriting")
 rewritingQ("Rewriting Query")
 start--> sparqlQ --> rewriting -->  rewritingQ--> unfolding
 ```
- The middleware unfolds the query q with respect to the mapping from the schema of
+ The middleware unfolds the query with respect to the mapping from the schema of
  the data source to the ontology.
 </template>
 <template #6>
@@ -446,11 +435,11 @@ layout: two-cols
 
 <v-clicks>
 
-- They do not require any preprocessing on a RDBMS  .
-- They allow ontology-based access via mappings and query rewriting.
+- It does not require any preprocessing on a RDBMS  .
+- It allows ontology-based access via mappings and query rewriting.
   - SPARQL to SQL
-- They provide a relatively cheap way to build a KG from relational databases.
-- They provide a smooth integration in industrial standard software environments.
+- It provides a relatively cheap way to build a KG from relational databases.
+- It provides a smooth integration in industrial standard software environments.
 </v-clicks>
 
 ::right::

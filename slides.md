@@ -39,7 +39,7 @@ image: https://wordlift.io/blog/en/wp-content/uploads/sites/3/2016/11/google-kno
 ## What build KGs?
 
 
-a set of nodes and edges between them that
+A set of nodes and edges between them that
  represent entities and their relationships
 </v-clicks>
 ---
