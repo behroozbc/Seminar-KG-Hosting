@@ -5,6 +5,8 @@ on:
   push:
     branches:
       - main
+    paths:
+      - presention/**
 jobs:
   build-and-deploy-gh-page:
     runs-on: ubuntu-latest
