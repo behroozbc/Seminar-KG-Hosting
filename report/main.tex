@@ -6,6 +6,7 @@
 \usepackage{xcolor}
 \usepackage{multicol}
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage[bookmarksnumbered,bookmarksopen,colorlinks,urlcolor=gray,linkcolor=blue,citecolor=blue]{hyperref}
 
 
@@ -69,13 +70,28 @@ the data is not normalized So, value replications can happen. The example of it 
 \end{figure}
 
 \subsubsection{Class-centric table}
-The class-centric approach uses one table per type, storing all property values in a single table. Properties may appear in multiple tables if shared by classes. Table 19.6 partially represents the knowledge graph from Fig. \ref{fig:gtkg-example}, with each class as a table and properties as columns. Properties without values in the graph become columns with NULL values, leading to sparse tables. A separate table (Table 19.6a) stores class hierarchies, enabling queries like “list all LocalBusiness instances” by joining with the Hotel table (Table 19.6b).
+The class-centric approach uses one table per type, storing all property values in a single table. Properties may appear in multiple tables if shared by classes. Fig. \ref{fig:Class-centric-example} partially represents the knowledge graph from Fig. \ref{fig:gtkg-example}, with each class as a table and properties as columns. Properties without values in the graph become columns with NULL values, leading to sparse tables. A separate table stores class hierarchies, enabling queries like “list all LocalBusiness instances” by joining with the Hotel table.
 
 Each type uses a separate table for its properties, making modeling intuitive. However, this approach has drawbacks. Adding new properties or classes requires schema recompilation. For instance, creating an event type instance involves adding a table and columns in the relational database schema. Additionally, normalization struggles with multivalued properties, causing tuple repetition. For example, multiple hotel descriptions require additional tuples with repeated values for other columns.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/Class-centric.jpeg}
+    \label{fig:Class-centric-example}
+    \caption{An example of Class-centric table}
+\end{figure}
 \subsubsection{Property-centric}
-Property-centric tables use one table per property, each with subject and object columns. This supports multivalued properties but requires subject duplication. Table 19.7 partially shows the property-centric storage of the knowledge graph in Fig. \ref{fig:gtkg-example}, focusing on hotel instance properties for brevity. Like the class-centric approach, it has drawbacks: adding new properties requires creating new tables and schema recompilation, and retrieving an instance’s properties involves joining many tables.
+Property-centric tables use one table per property, each with subject and object columns. This supports multivalued properties but requires subject duplication. Fig. \ref{fig:Property-centric-example} partially shows the property-centric storage of the knowledge graph in Fig. \ref{fig:gtkg-example}, focusing on hotel instance properties for brevity. Like the class-centric approach, it has drawbacks: adding new properties requires creating new tables and schema recompilation, and retrieving an instance’s properties involves joining many tables.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/Property-centric.jpeg}
+    \label{fig:Property-centric-example}
+    \caption{An example of Property-centric table}
+\end{figure}
 \subsubsection{Virtual RDF graphs}
-The last one, virtual RDF graphs, provides an ontology-based access layer over relational databases, transforming SPARQL queries into SQL for execution, with results mapped back to SPARQL. Popular for converting relational databases to knowledge graphs, the process (Fig. 19.2) involves rewriting SPARQL queries per the ontology, unfolding them using schema-to-ontology mappings, and executing the resulting SQL. Optimizations include offline ontology compilation, exploiting data constraints to simplify queries, and cost-based query planning. Ontop10 (Xiao et al. 2020), an Apache 2-licensed framework, supports R2RML, SPARQL 1.1 subsets, and OWL 2 QL reasoning via query rewriting.
+The last one, virtual RDF graphs, provides an ontology-based access layer over relational databases, transforming SPARQL queries into SQL for execution, with results mapped back to SPARQL. Popular for converting relational databases to knowledge graphs, the process (Fig. \ref{fig:VirtualRDFgraphsalgorithm}) involves rewriting SPARQL queries per the ontology, unfolding them using schema-to-ontology mappings, and executing the resulting SQL. Optimizations include offline ontology compilation, exploiting data constraints to simplify queries, and cost-based query planning. Ontop10 (Xiao et al. 2020), an Apache 2-licensed framework, supports R2RML, SPARQL 1.1 subsets, and OWL 2 QL reasoning via query rewriting.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/Virtual RDF graphs algorithm.jpeg}
+    \label{fig:VirtualRDFgraphsalgorithm}
+    \caption{The process model of querying a virtual RDF graph.}
+\end{figure}
 \begin{multicols}{2}
     Advantages:
     \begin{itemize}
@@ -99,9 +115,21 @@ The document stores model for knowledge graphs is schemaless, enabling looser co
 
 The document model paradigm can host KGs in two ways: nested objects and document references.
 \subsubsection{Nested objects}
-The nested object approach stores all instance data in a single document, simplifying access. However, updating nested objects across multiple documents is challenging and typically managed by application logic or middleware. Figure 19.3 depicts the knowledge graph from Fig. \ref{fig:gtkg-example} as nested objects, with blank nodes represented by nested objects lacking an id field.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/Nested objects example.jpeg}
+    \label{fig:Nested-objects-example}
+    \caption{An example of Nested objects table}
+\end{figure}
+The nested object approach stores all instance data in a single document, simplifying access. However, updating nested objects across multiple documents is challenging and typically managed by application logic or middleware.
+Figure \ref{fig:Nested-objects-example} depicts the knowledge graph from Fig. \ref{fig:gtkg-example} as nested objects, with blank nodes represented by nested objects lacking an id field.
+
 \subsubsection{Document references}
-The document reference approach organizes documents into cohesive collections, storing references instead of nested objects. This simplifies updates compared to nested objects but requires application-level join operations, blurring the line between document stores and relational databases. Figure 19.4 partially represents the knowledge graph from Fig. \ref{fig:gtkg-example}, with separate collections for Hotel and PostalAddress instances. A hotel's address property, a blank node in the graph, uses an internally unique ID (e.g., \_:123) from the PostalAddress collection.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/Document references example.jpeg}
+    \label{fig:document-ref-example}
+    \caption{An example of Nested objects table}
+\end{figure}
+The document reference approach organizes documents into cohesive collections, storing references instead of nested objects. This simplifies updates compared to nested objects but requires application-level join operations, blurring the line between document stores and relational databases. Figure \ref{fig:document-ref-example} partially represents the knowledge graph from Fig. \ref{fig:gtkg-example}, with separate collections for Hotel and PostalAddress instances. A hotel's address property, a blank node in the graph, uses an internally unique ID (e.g., \_:123) from the PostalAddress collection.
 
 Many document store implementations can host knowledge graphs. For example, HexaDB implements an RDF triplestore using RocksDB as its key-value backend, with indexing optimizations. AllegroGraph offers a document store backend alongside its graph-based model.
 
@@ -121,19 +149,72 @@ The main disadvantage of this way is the lack of standardized technologies for q
 \subsubsection{RDF triplestores}
 RDF graph databases, or triplestores, store triples per the RDF model, optimized for this structure. They support RDFS and OWL2 reasoning with built-in reasoners and use SPARQL 1.1 for querying, often with APIs. Many use relational or document store backends, but recent implementations natively support RDF graphs (Karvinen et al. 2019). Triplestores offer flexible schemas, blending schema and data for querying, and follow W3C standards (RDF, RDFS, OWL, SPARQL), aiding vendor migration and tooling. A survey lists 135 triplestore implementations, some scaling to trillions of triples (Ali et al. 2021). Unlike property graphs, which support statements about relationships but lack native reasoning, RDF triplestores provide reasoning but struggle with statements about statements. Extensions like Named Graphs and RDF-Star add metadata for context like temporal validity or provenance. Efforts to bridge property graphs and RDF include Neo4j's Neosemantics plugin, supporting RDF technologies, and AnzoGraph, which handles both models. Standardization for graph databases continues.
 \section{Real-world Application: German Tourism Knowledge Graph (GTKG) in GraphDB}
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/GraphDB user interface.jpeg}
+    \label{fig:graphdb-ui}
+    \caption{A part of the graph in Fig. \ref{fig:gtkg-example} browsed via the GraphDB user interface}
+\end{figure}
 The German Tourism Knowledge Graph is hosted in an RDF triplestore called GraphDB from Ontotext. GraphDB provides all major functionalities needed for hosting KGs, such as storing, querying, visualizing, and reasoning of RDF graphs.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/named graph.jpeg}
+    \label{fig:named-graph}
+    \caption{Provenance information attached to the named graph (The named graph IRI is shortened
+        for readability)}
+\end{figure}
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/query-example.jpeg}
+    \label{fig:query-example}
+    \caption{GraphDB SPARQL interface with a query running on the GTKG.}
+\end{figure}
 
 In this section, we will demonstrate what these functionalities look like with the help of our running example presented in the German Tourism Knowledge Graph (GTKG).
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/19.8.jpeg}
+    \label{fig:class-hierarchy-example}
+    \caption{Class hierarchy visualization of the German Tourism Knowledge Graph.}
+\end{figure}
 
-The GTKG, hosted in GraphDB Enterprise, contains over 13M statements integrating tourism data from 16 German states, including events, tours, and POIs. Data is organized in named graphs, each representing a state’s tourism marketing organization, e.g., Saarland’s data in \verb|dzt-graph:a8f2d882a3a2ab5af3d8acbf80799701|, enabling provenance tracking and licensing access control. RDF graphs can be loaded via GUI, API, or SPARQL INSERT queries. Figure 19.5 shows a tabular view of the graph from Fig. \ref{fig:gtkg-example}, with statements about \verb|dzt-entity:-1664177870| organized in the Saarland named graph. This graph’s IRI is used to assert properties like dataset creation dates (December 2021, February 2022) and publisher via schema.org and PROV-O terminology, as shown in Fig. 19.6.
+The GTKG, hosted in GraphDB Enterprise, contains over 13M statements integrating tourism data from 16 German states, including events, tours, and POIs. Data is organized in named graphs, each representing a state’s tourism marketing organization, e.g., Saarland’s data in \verb|dzt-graph:a8f2d882a3a2ab5af3d8acbf80799701|, enabling provenance tracking and licensing access control. RDF graphs can be loaded via GUI, API, or SPARQL INSERT queries. Figure \ref{fig:graphdb-ui} shows a tabular view of the graph from Fig. \ref{fig:gtkg-example}, with statements about \verb|dzt-entity:-1664177870| organized in the Saarland named graph. This graph’s IRI is used to assert properties like dataset creation dates (December 2021, February 2022) and publisher via schema.org and PROV-O terminology, as shown in Fig. \ref{fig:named-graph}.
 
-GraphDB offers a graphical interface and API for running SPARQL 1.1 queries. By default, queries target the union of all named graphs in a repository unless a named graph is specified using FROM NAMED or GRAPH keywords, which scopes the triple patterns. Figure 19.7 shows the interface executing a query to retrieve 1000 triples from the Saarland named graph, using the GRAPH keyword to bind the graph’s IRI and filter by the publisher’s name property.
+GraphDB offers a graphical interface and API for running SPARQL 1.1 queries. By default, queries target the union of all named graphs in a repository unless a named graph is specified using FROM NAMED or GRAPH keywords, which scopes the triple patterns. Figure \ref{fig:query-example} shows the interface executing a query to retrieve 1000 triples from the Saarland named graph, using the GRAPH keyword to bind the graph’s IRI and filter by the publisher’s name property.
 
-GraphDB offers three main visualizations for RDF datasets: class hierarchy, class relationships, and visual graph. The class hierarchy uses a Venn diagram view, with circles representing classes and their subclasses, sized by instance count. Figure 19.8 shows schema:Thing as a top class in the GTKG, aiding visual debugging for class errors. Class relationship visualization highlights links between class instances, e.g., ~520K schema:geo links from schema:Place to schema:GeoCoordinates (Fig. 19.9), showing key types by connectedness. The visual graph displays incoming and outgoing edges for a resource’s IRI or SPARQL-selected subgraph (Fig. \ref{fig:gtkg-example}0), initially showing 1-hop connections, with configurable, interactive node expansion.
-
+GraphDB offers three main visualizations for RDF datasets: class hierarchy, class relationships, and visual graph. The class hierarchy uses a Venn diagram view, with circles representing classes and their subclasses, sized by instance count. Figure \ref{fig:class-hierarchy-example} shows schema:Thing as a top class in the GTKG, aiding visual debugging for class errors. Class relationship visualization highlights links between class instances, e.g., ~520K schema:geo links from schema:Place to schema:GeoCoordinates (Fig. \ref{fig:class-hierarchy-example1}), showing key types by connectedness. The visual graph displays incoming and outgoing edges for a resource’s IRI or SPARQL-selected subgraph (Fig. \ref{fig:class-hierarchy-example2}), initially showing 1-hop connections, with configurable, interactive node expansion.
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/19.10.jpeg}
+    \label{fig:class-hierarchy-example2}
+    \caption{An interactive graph visualization of the instance is represented in Fig. \ref{fig:gtkg-example}}
+\end{figure}
 GraphDB’s reasoner infers new facts from existing ones using W3C-recommended entailment rules in a forward-chaining approach. Its materialization strategy applies inference rules at load time, increasing loading time but speeding up queries. Supported reasoning profiles include RDF(S), RDFS-Plus, and OWL2 profiles (Horst, DL, QL, RL), each suited for different use cases. RDFS-Plus, used by the GTKG, supports subsumption, inverse, and transitive property reasoning (Allemang et al. 2020). OWL-Horst, a non-W3C profile, optimizes performance for large datasets. GraphDB uses two virtual named graphs: explicit (loaded triples) and implicit (inferred triples). Queries can target explicit statements only or both, e.g., querying “All Local businesses” in Fig. \ref{fig:gtkg-example} returns no results with explicit statements but retrieves schema:Hotel instances with both due to subsumption reasoning.
+
+\begin{figure}
+    \includegraphics[width=\linewidth]{imgs/19.9.jpeg}
+    \label{fig:class-hierarchy-example1}
+    \caption{Class hierarchy visualization of the German Tourism Knowledge Graph.}
+\end{figure}
 \section{Conclusion}
-KG hosting demands paradigms that accommodate graph semantics, scale, and dynamism. Relational databases offer integrity but rigidity; document stores provide flexibility for annotations but weak connectivity; graph databases, especially RDF triplestores, emerge as optimal, balancing all challenges with native reasoning and standards.
+KG hosting demands paradigms that accommodate graph semantics, scale, and dynamism. Relational databases offer integrity but rigidity; document stores provide flexibility for annotations but weak connectivity; graph databases, especially RDF triplestores, emerge as optimal, balancing all challenges with native reasoning and standards. The overview of paradigms is Table \ref{tab:overview}.
 
 Future work could be enhanced reasoning for emerging KG applications. The GTKG case underscores practical viability, guiding deployments in tourism and beyond.
+
+
+\begin{table}[htbp]  % Table environment for floating
+    \centering
+    \caption{Overview of the different hosting paradigms}  % Table caption (optional)
+    \label{tab:overview}  % Label for referencing (optional)
+    \begin{tabularx}{\textwidth}{|X|X|X|}  % Table with full text width, 3 X columns with vertical lines
+        \hline  % Horizontal line at the top
+        Relational database                                         & Document database                                                                                                                 & Graph database (triplestore)                                                                                                       \\  % First row
+        \hline
+        Fixed schema.                                               & No fixed schema.                                                                                                                  & No constraining, rigid schema(still they can have ontologies).                                                                     \\
+        \hline
+        Schema adaptations require a change of the database schema. & Documents in a collection can have different properties; adding properties possible without affecting already existing documents. & Allows to easily integrate data using different schemas (ontologies); adding properties does not affect existing graphs as in RDB. \\
+        \hline
+        Data are organized in different tables.                     & Documents are organized in collections.                                                                                           & Triples can be organized in named graphs.                                                                                          \\
+        \hline
+        JOINs required to combine data from different tables.       & Allows embedding documents;JOINs required when using identifiers to link to other documents.                                      & JOINs are required, but they are handled differently than relational databases.                                                    \\
+        \hline  % Horizontal line at the bottom
+        No native reasoning.                                        & No native reasoning.                                                                                                              & Native logical reasoning.                                                                                                          \\
+        \hline
+    \end{tabularx}
+\end{table}
 \end{document}
